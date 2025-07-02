@@ -1,0 +1,76 @@
+{
+	"layer": "top",
+	"height": 15,
+	"margin": 0,
+	"spacing": 10,
+	"modules-left": ["custom/arch","hyprland/workspaces","hyprland/window"],
+	"modules-right": ["tray","network","bluetooth","cpu","temperature","memory","pulseaudio","battery","custom/logout","clock"],
+
+  "custom/arch": {
+		"format": "󰣇 Arch",
+    "tooltip-format": "I Use Arch BTW!!",
+    "on-click": "rofi -show drun"
+  },
+
+	"hyprland/workspaces": {
+		  "format": "{icon}",
+		  "format-icons": {
+			  "default": "󰊠",
+			  "active": "󰮯",
+        "empty": ""
+		  },
+		  "persistent-workspaces": {
+			"*": 5
+		  },
+	},
+
+	"hyprland/window": {
+		"format": "  >> {}",
+		"max-length": 100
+	},
+
+	"clock": {
+		"format": "{:%H:%M   %d/%m 󰸗 }",
+    "timezone": "America/Argentina/Buenos_Aires",
+	},
+
+	"tray":{
+		"icon-size": 18,
+		"spacing": 10
+	},
+
+	"cpu": {
+		"format": " {usage}%"
+	},
+
+	"memory": {
+		"format": " {}%"
+	},
+
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-muted": " 󰸈  ",
+		"format-icons": ["󰕿","󰖀","󰕾"]
+	},
+
+	"battery": {
+		    "format": "{icon}  {capacity}%",
+			"format-icons": ["", "", "", "", ""],
+	},
+
+	"network": {
+		"format": "󰖩",
+		"format-disconnected": "󰖪",
+		"on-click": "kitty nmtui"
+	},
+
+	"bluetooth": {
+		"format": "󰂯",
+		"format-off": "󰂲",
+		"on-click": "kitty bluetuith"
+	},
+
+  "temperature": {
+    "format": " {temperatureC}°C"
+  },
+}
