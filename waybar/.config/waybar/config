@@ -1,0 +1,65 @@
+{
+	"layer": "top",
+	"height": 15,
+	"margin": 0,
+	"spacing": 10,
+	"modules-left": ["custom/media"],
+  "modules-center": ["hyprland/workspaces"],
+	"modules-right": ["tray","network","bluetooth","battery","pulseaudio","clock"],
+
+	"hyprland/workspaces": {
+		  "format": "{icon}",
+		  "format-icons": {
+			  "default": "󰊠",
+			  "active": "󰮯",
+        "empty": ""
+		  },
+		  "persistent-workspaces": {
+        "*": 10
+		  },
+	},
+
+	"hyprland/window": {
+		"format": "  >> {}",
+		"max-length": 100
+	},
+
+	"clock": {
+		"format": "{:%H:%M %d/%m}",
+    "timezone": "America/Argentina/Buenos_Aires",
+	},
+
+	"tray":{
+		"icon-size": 18,
+		"spacing": 10
+	},
+
+  "custom/media": {
+    "format": "{}",
+    "exec": "title=$(playerctl metadata title 2>/dev/null); artist=$(playerctl metadata artist 2>/dev/null); if [ -n \"$title\" ]; then [ ${#title} -gt 30 ] && title=\"${title:0:27}...\"; echo \"$title - $artist\"; else mpd_title=$(mpc current); [ ${#mpd_title} -gt 30 ] && mpd_title=\"${mpd_title:0:27}...\"; echo \"$mpd_title\"; fi",
+   "interval": 1
+  },
+
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-muted": " 󰸈  ",
+		"format-icons": ["󰕿","󰖀","󰕾"]
+	},
+
+	"battery": {
+		    "format": "{icon}  {capacity}%",
+			"format-icons": ["", "", "", "", ""],
+	},
+
+	"network": {
+		"format": "󰖩",
+		"format-disconnected": "󰖪",
+		"on-click": "kitty nmtui"
+	},
+
+	"bluetooth": {
+		"format": "󰂯",
+		"format-off": "󰂲",
+		"on-click": "kitty bluetuith"
+	},
+}
