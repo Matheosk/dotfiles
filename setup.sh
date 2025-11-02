@@ -1,5 +1,7 @@
 #!/bin/sh
 
+dir=$(pwd)
+
 ################
 # Package List #
 ################
@@ -49,6 +51,8 @@ PACKAGES=(
   vim
   lutris
   python-pipx
+  light
+  ttf-font-awesome
 )
 
 
@@ -65,3 +69,4 @@ rm -rf yay
 
 echo "· Installing dotfiles..."
 stow -nv */
+
