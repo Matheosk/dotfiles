@@ -1,6 +1,9 @@
 #!/bin/sh
+set -e
 
 dir=$(pwd)
+
+sudo echo ""
 
 ################
 # Package List #
@@ -55,6 +58,7 @@ PACKAGES=(
   ttf-font-awesome
 )
 
+clear 
 
 echo -e "╭──────────────────────────────────────────────╮"
 echo -e "|          \033[36;49;1;3mMatheosk's dots autosetup\033[0m           |"
@@ -63,10 +67,22 @@ echo -e "╰──────────────────────�
 echo "· Installing pacman packages..."
 sudo pacman -Syu $PACKAGES --needed --noconfirm > /dev/null
 
+
 echo "· Installing yay..."
-git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm > /dev/null
-rm -rf yay
+tmpdir=$(mktemp -d)
+git clone https://aur.archlinux.org/yay.git "$tmpdir/yay"
+cd "$tmpdir/yay"
+makepkg -si --noconfirm > /dev/null
+cd "$dir"
+rm -rf "$tmpdir"
+
+
 
 echo "· Installing dotfiles..."
-stow -nv */
+cd "$dir"
+stow -v */
+
+
+echo "· Setting up zsh..."
+chsh -s /bin/zsh
 
